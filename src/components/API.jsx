@@ -51,11 +51,14 @@ export default function API() {
 
   console.log(uniqueCuisines);
   return (
-    <div style={{ backgroundColor: "#c07b9936", minHeight: "100vh" }}>
-      <Box
-        gap={2}
-        sx={{ p: 2, display: "flex", justifyContent: "center", width: "100%" }}
-      >
+    <div
+      style={{
+        backgroundColor: "#c07b9936",
+        minHeight: "100vh",
+        width: "100%",
+      }}
+    >
+      <Box gap={2} sx={{ p: 2, display: "flex", justifyContent: "center" }}>
         <TextField
           fullWidth
           label="Search recipe here..."
