@@ -30,13 +30,22 @@ export default function API() {
       setSearch(e.target.value);
       setLoading(false);
     }, 1000);
+    // axios
+    //   .get(`https://dummyjson.com/recipes/search?q=${e.target.value}`)
+    //   .then(async (res) => {
+    //     console.log(res.data.recipes);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://dummyjson.com/recipes")
+      .get("https://dummyjson.com/recipes?limit=100")
       .then(async (res) => {
+        console.log(res.data.recipes);
         await setRcp(res.data.recipes);
         setTimeout(() => {
           setLoading(false);
@@ -49,7 +58,7 @@ export default function API() {
   let filter = rcp.map((i) => i.cuisine);
   const uniqueCuisines = [...new Set(filter)];
 
-  console.log(uniqueCuisines);
+  // console.log(uniqueCuisines);
   return (
     <div
       style={{
@@ -58,7 +67,15 @@ export default function API() {
         width: "100%",
       }}
     >
-      <Box gap={2} sx={{ p: 2, display: "flex", justifyContent: "center" }}>
+      <Box
+        gap={2}
+        sx={{
+          p: 2,
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: { xs: "column", sm: "row" },
+        }}
+      >
         <TextField
           fullWidth
           label="Search recipe here..."

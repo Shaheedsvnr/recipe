@@ -28,9 +28,9 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: "80%",
   bgcolor: "background.paper",
-  //   border: "2px solid #000",
+  border: "1px solid #000",
   boxShadow: 24,
-  borderRadius: "20px",
+  // borderRadius: "20px",
   //   p: "1px",
   //   maxHeight: "40vh",
 };
@@ -70,7 +70,7 @@ export default function RecipeReviewCard({ data, index }) {
 
   return (
     <Box>
-      <Card onClick={() => handleSingle(data)} sx={{ width: 400, margin: 2 }}>
+      <Card onClick={() => handleSingle(data)} sx={{ width: 400, margin: 1 }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

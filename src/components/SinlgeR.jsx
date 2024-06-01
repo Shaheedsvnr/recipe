@@ -12,8 +12,14 @@ import SkipNextIcon from "@mui/icons-material/SkipNext";
 import { CardActions, Chip, Collapse, Divider } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import StarIcon from "@mui/icons-material/Star";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { styled } from "@mui/material/styles";
-
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+// import StarIcon from "@mui/icons-material/Star";
 const Root = styled("div")(({ theme }) => ({
   width: "100%",
   ...theme.typography.body2,
@@ -46,6 +52,8 @@ export default function MediaControlCard({ item }) {
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         justifyContent: "space-between",
+        maxHeight: "90vh",
+        overflow: "auto",
       }}
     >
       <CardMedia
@@ -106,16 +114,33 @@ export default function MediaControlCard({ item }) {
         </CardContent>
         <CardActions disableSpacing>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
+            <CardContent sx={{ height: "45vh", overflow: "auto" }}>
               <Root>
                 <Divider>
                   <Typography variant="overline">Instructions</Typography>
                 </Divider>
-                {item.instructions.map((ing) => (
-                  <Typography key={ing} paragraph>
-                    {ing}
-                  </Typography>
-                ))}
+                <List
+                  sx={{
+                    width: "100%",
+                    // maxWidth: 360,
+                    bgcolor: "background.paper",
+                  }}
+                  aria-label="contacts"
+                >
+                  {item.instructions.map((ing) => (
+                    // <Typography key={ing} paragraph>
+                    //   {ing}
+                    // </Typography>
+                    <ListItem disablePadding>
+                      <ListItemButton>
+                        <ListItemIcon>
+                          <CheckCircleOutlineIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={ing} />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                </List>
               </Root>
             </CardContent>
           </Collapse>
